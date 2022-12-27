@@ -1,5 +1,9 @@
-<app-header></app-header>
+<app-header (actTab)="processActiveView($event)"></app-header>
 <div class="container">
   <div class="row">
-<app-recipes></app-recipes>
-<app-shoppinglist></app-shoppinglist>
+<app-recipes *ngIf="activeTab ==='recipes'; else marker"></app-recipes>
+<ng-template   #marker>
+  <app-shoppinglist></app-shoppinglist>
+</ng-template>
+
+

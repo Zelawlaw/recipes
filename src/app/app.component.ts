@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+activeTab :String='';
+
+processActiveView(activetab:String){
+  console.log('processing emitted event. activeTab:'+activetab);
+  this.activeTab=activetab;
+}
+
 }

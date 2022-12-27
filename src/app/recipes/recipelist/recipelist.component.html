@@ -3,19 +3,11 @@
 </div>
 <div class="row">
   <div class="list-group col-xs-12">
-  <a href="#" class="list-group-item clearfix"  *ngFor="let item of recipes">
-    <div class="float-start">
-      <h4 class="list-group-item-heading">
-       {{item.name}}
-      </h4>
-      <p class="list-group-item-text">{{item.description}}</p>
-    </div>
-    <span class="float-end">
-      <img [src]="item.imagePath" alt="" class="img-responsive" style="max-height: 50px;">
-    </span>
-  </a>
 
- 
+    <app-recipeitem
+    *ngFor="let recipeEl of recipes"
+    [recipe]="recipeEl"
+    (recipeSelectedL1) ="selectedRecipe(recipeEl)"></app-recipeitem>
+
   </div>
 </div>
-<app-recipeitem></app-recipeitem>
