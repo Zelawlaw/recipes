@@ -7,6 +7,8 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipedetail.component.css']
 })
 export class RecipedetailComponent {
- @Input('selectedRecipe4Detail') selectedRecipe:Recipe = new Recipe('a','b','c');
-  
+ @Input('selectedRecipe4Detail') selectedRecipe!:Recipe;
+
+
+
 }
