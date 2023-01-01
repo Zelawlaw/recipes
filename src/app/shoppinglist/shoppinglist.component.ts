@@ -16,11 +16,11 @@ export class ShoppinglistComponent {
 
 
 
-  processProps(props:string[]){
+  processProps(props:any[]){
 
   switch(props[0]){
    case 'add':
-    this.ingredients.push(new Ingredient(props[1],parseInt(props[2])));
+    this.ingredients.push(props[1]);
    break;
    case 'delete':
     this.ingredients.pop();

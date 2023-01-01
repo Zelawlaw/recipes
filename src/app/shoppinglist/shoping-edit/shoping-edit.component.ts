@@ -1,4 +1,5 @@
 import { Component, ViewChild ,ElementRef ,SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -10,7 +11,7 @@ export class ShopingEditComponent implements OnChanges {
 
 @ViewChild('nameInput') inputName!:ElementRef;
 @ViewChild('amountInput') inputAmount!:ElementRef;
-@Output('ingrProps') emitProps = new EventEmitter<string []>();
+@Output('ingrProps') emitProps = new EventEmitter<any []>();
 
 
 ngOnChanges(changes: SimpleChanges) {
@@ -28,7 +29,9 @@ processItem(action:string):void{
   }
   else{
     console.log("emitting emitProps()");
-   this.emitProps.emit([action,this.inputName.nativeElement.value,this.inputAmount.nativeElement.value]);
+   this.emitProps.emit([action, new Ingredient(
+     this.inputName.nativeElement.value,
+    this.inputAmount.nativeElement.value)]);
   }
 }
 
