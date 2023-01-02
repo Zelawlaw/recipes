@@ -1,4 +1,5 @@
-import { Component, ViewChild ,ElementRef ,SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild ,ElementRef ,SimpleChanges, OnChanges, Output, EventEmitter, OnInit } from '@angular/core';
+import { ShoppingListService } from 'src/app/services/shoppinglist.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
@@ -11,8 +12,8 @@ export class ShopingEditComponent implements OnChanges {
 
 @ViewChild('nameInput') inputName!:ElementRef;
 @ViewChild('amountInput') inputAmount!:ElementRef;
-@Output('ingrProps') emitProps = new EventEmitter<any []>();
 
+constructor(private shoppingListService:ShoppingListService){}
 
 ngOnChanges(changes: SimpleChanges) {
   console.log('changes :'+changes)
@@ -28,10 +29,11 @@ processItem(action:string):void{
     alert('Kindly input an Amount');
   }
   else{
-    console.log("emitting emitProps()");
-   this.emitProps.emit([action, new Ingredient(
-     this.inputName.nativeElement.value,
-    this.inputAmount.nativeElement.value)]);
+   
+  this.shoppingListService.processProps([action, 
+    new Ingredient(this.inputName.nativeElement.value,
+      this.inputAmount.nativeElement.value)]);
+
   }
 }
 
