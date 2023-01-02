@@ -1,9 +1,11 @@
+import { EventEmitter } from "@angular/core";
 import { Recipe } from "../recipes/recipe.model";
 
 
 export class RecipeService{
 isselectiondone =  false;
 selectedRecipe!:Recipe;
+emitSelectionDone = new EventEmitter<{isselected:boolean,recipefocus: Recipe}>();
 
 recipes:Recipe[] =[
   new Recipe('A Test Recipe 1',
@@ -23,6 +25,7 @@ recipes:Recipe[] =[
 this.selectedRecipe = selectedRecipe;
 this.isselectiondone = true;
 console.log("isselectiondone :"+this.isselectiondone);
+this.emitSelectionDone.emit({isselected:true,recipefocus:selectedRecipe});
 }
 
 }

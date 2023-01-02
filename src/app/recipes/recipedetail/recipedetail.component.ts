@@ -13,7 +13,12 @@ selectedRecipe!:Recipe;
 constructor(private recipeService:RecipeService){}
 
 ngOnInit(): void {
-  this.selectedRecipe  =  this.recipeService.selectedRecipe;
+ this.selectedRecipe  =  this.recipeService.selectedRecipe;
+  this.recipeService.emitSelectionDone.subscribe(
+    (clickedrecipe : {isselected:boolean,recipefocus: Recipe})=>{ 
+      console.log('subscribed?');
+      this.selectedRecipe = clickedrecipe.recipefocus;}
+  );
 }
 
 

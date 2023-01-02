@@ -14,7 +14,12 @@ selectiondone!:boolean;
 constructor(private recipeService:RecipeService){}
 
 ngOnInit(): void {
- this.selectiondone = this.recipeService.isselectiondone;
+ //this.selectiondone = this.recipeService.isselectiondone;
+  
+ this.recipeService.emitSelectionDone.subscribe(
+  (clickedrecipe : {isselected:boolean,recipefocus: Recipe})=>{ this.selectiondone = clickedrecipe.isselected;}
+);
+
 }
 
 }
