@@ -7,15 +7,12 @@ import {Recipe} from '../../recipe.model';
 })
 export class RecipeitemComponent  {
 
-@Input() recipe :Recipe =  new Recipe('bla',
-'blabla',
-'fish');
-
-@Output() recipeSelectedL1 = new EventEmitter<void>();
+ @Input() recipe !:Recipe;
+//@Output() recipeSelectedL1 = new EventEmitter<void>();
 
 onSelected(){
-  console.log("emited to L1");
-  this.recipeSelectedL1.emit();
+ // console.log("emited to L1");
+ // this.recipeSelectedL1.emit();
 }
 
 
