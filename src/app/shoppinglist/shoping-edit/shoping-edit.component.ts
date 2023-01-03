@@ -1,5 +1,5 @@
 import { Component, ViewChild ,ElementRef ,SimpleChanges, OnChanges, Output, EventEmitter, OnInit } from '@angular/core';
-import { ShoppingListService } from 'src/app/services/shoppinglist.service';
+import { ShoppingListService } from 'src/app/shoppinglist/shoppinglist.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({

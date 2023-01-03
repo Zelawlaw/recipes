@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../services/recipe.service';
+import { RecipeService } from './recipe.service';
 import { Recipe } from './recipe.model'
+import { ShoppingListService } from '../shoppinglist/shoppinglist.service';
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
@@ -17,7 +18,8 @@ ngOnInit(): void {
  //this.selectiondone = this.recipeService.isselectiondone;
   
  this.recipeService.emitSelectionDone.subscribe(
-  (clickedrecipe : {isselected:boolean,recipefocus: Recipe})=>{ this.selectiondone = clickedrecipe.isselected;}
+  (clickedrecipe : {isselected:boolean,recipefocus: Recipe})=>{ this.selectiondone = clickedrecipe.isselected;
+   this.focusRecipe= clickedrecipe.recipefocus;}
 );
 
 }

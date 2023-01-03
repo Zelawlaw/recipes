@@ -1,12 +1,11 @@
 import { Component , OnInit } from '@angular/core';
-import { ShoppingListService } from '../services/shoppinglist.service';
+import { ShoppingListService } from './shoppinglist.service';
 import { Ingredient } from '../shared/ingredient.model';
 
 @Component({
   selector: 'app-shoppinglist',
   templateUrl: './shoppinglist.component.html',
-  styleUrls: ['./shoppinglist.component.css'],
-  providers:[ShoppingListService]
+  styleUrls: ['./shoppinglist.component.css']
 })
 export class ShoppinglistComponent implements OnInit {
 ingredients!: Ingredient[];

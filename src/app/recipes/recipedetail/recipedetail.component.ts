@@ -1,5 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
-import { RecipeService } from 'src/app/services/recipe.service';
+import { RecipeService } from 'src/app/recipes/recipe.service';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -19,6 +19,10 @@ ngOnInit(): void {
       console.log('subscribed?');
       this.selectedRecipe = clickedrecipe.recipefocus;}
   );
+}
+
+addToShoppingList(){
+  this.recipeService.addToShoppingList(this.selectedRecipe.ingredients);
 }
 
 
