@@ -3,11 +3,6 @@
     <app-recipelist></app-recipelist>
   </div>
   <div class="col-md-7">
-    <app-recipedetail  *ngIf="focusRecipe;else elseTemplate"
-    ></app-recipedetail>
-
-    <ng-template #elseTemplate>
-      <p>Please Select a Recipe!</p>
-    </ng-template>
+   <router-outlet></router-outlet>
   </div>
 </div>

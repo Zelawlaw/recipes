@@ -17,9 +17,12 @@
       >Manage Recipe</button>
       <li class="dropdown">
     <ul  class="dropdown-menu">
-      <li class="dropdown-item"><a href="#" (click)="addToShoppingList()">To Shopping list</a></li>
-      <li class="dropdown-item"><a href="#">Edit Recipe</a></li>
-      <li class="dropdown-item"><a href="#">Delete</a></li>
+      <li class="dropdown-item"><a  (click)="addToShoppingList()">To Shopping list</a></li>
+      <li class="dropdown-item">
+        <a 
+          [routerLink]="['edit']" routerLinkActive="active"                  
+        >Edit Recipe</a></li>
+      <li class="dropdown-item"><a >Delete</a></li>
     </ul>
   </li>
     </div>

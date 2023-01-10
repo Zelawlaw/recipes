@@ -50,4 +50,16 @@ this.slService.addIngredients(ingredients);
 
 }
 
+getRecipe(id:number){
+
+  return this.recipes[id];
+}
+
+isInRange(id:number){
+
+  if(id<this.recipes.length && id >= 0)
+  return true;
+  else return false;
+}
+
 }
