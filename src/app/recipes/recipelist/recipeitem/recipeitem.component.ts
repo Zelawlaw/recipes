@@ -14,11 +14,11 @@ export class RecipeitemComponent  {
 
 constructor(private recipeService:RecipeService){}
 
-onSelected(){
- // console.log("emited to L1");
- // this.recipeSelectedL1.emit();
- this.recipeService.clickedRecipe(this.recipe);
-}
+// onSelected(){
+//  // console.log("emited to L1");
+//  // this.recipeSelectedL1.emit();
+//  this.recipeService.clickedRecipe(this.recipe);
+// }
 
 
 

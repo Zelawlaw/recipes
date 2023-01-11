@@ -1,4 +1,5 @@
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shoppinglist/shoppinglist.service";
 import { Recipe } from "./recipe.model";
@@ -7,7 +8,8 @@ import { Recipe } from "./recipe.model";
 export class RecipeService{
 isselectiondone =  false;
 selectedRecipe!:Recipe;
-emitSelectionDone = new EventEmitter<{isselected:boolean,recipefocus: Recipe}>();
+//emitSelectionDone = new Subject<{isselected:boolean,recipefocus: Recipe}>();
+
 
 constructor(private slService:ShoppingListService){}
 
@@ -29,13 +31,13 @@ private recipes:Recipe[] =[
 ];
 
 
- clickedRecipe(selectedRecipe:Recipe){
-   console.log("clicked :"+JSON.stringify(selectedRecipe));
-this.selectedRecipe = selectedRecipe;
-this.isselectiondone = true;
-console.log("isselectiondone :"+this.isselectiondone);
-this.emitSelectionDone.emit({isselected:true,recipefocus:selectedRecipe});
-}
+//  clickedRecipe(selectedRecipe:Recipe){
+//    console.log("clicked :"+JSON.stringify(selectedRecipe));
+// this.selectedRecipe = selectedRecipe;
+// this.isselectiondone = true;
+// console.log("isselectiondone :"+this.isselectiondone);
+// this.emitSelectionDone.next({isselected:true,recipefocus:selectedRecipe});
+// }
 
 getRecipes(): Recipe[]{
 

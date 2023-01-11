@@ -19,12 +19,12 @@ ngOnInit(): void {
   this.recipes = this.recipeService.getRecipes();
 }
 
-selectedRecipe(selectedRecipe:Recipe){
-//  console.log("emited to L2");
-//this.selectedRecipeL2.emit(selectedRecipe);
-console.log('clicked Item?');
- this.recipeService.clickedRecipe(selectedRecipe);
-}
+// selectedRecipe(selectedRecipe:Recipe){
+// //  console.log("emited to L2");
+// //this.selectedRecipeL2.emit(selectedRecipe);
+// console.log('clicked Item?');
+//  this.recipeService.clickedRecipe(selectedRecipe);
+// }
 
 createRecipe(){
 this.router.navigate(['new'],{relativeTo:this.route});
