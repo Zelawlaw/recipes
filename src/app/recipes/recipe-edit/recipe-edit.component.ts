@@ -42,7 +42,7 @@ export class RecipeEditComponent implements OnInit , OnDestroy {
       this.initForm();
     });
    
-    this.recipeService.emitRecipes.subscribe(
+   this.recipeSubscription = this.recipeService.emitRecipes.subscribe(
      (data :Recipe [])=>{
       this.lastIndex = data.length-1;
      }
@@ -141,8 +141,12 @@ onAddIngredient(){
     this.router.navigate(['../'],{relativeTo:this.route});
   }
 
+   onDeleteIngredient(index :number){
+    this.removeIngredient(index);
+   }
+
   ngOnDestroy(): void {
-      
+    this.recipeSubscription.unsubscribe();  
   }
 
  
