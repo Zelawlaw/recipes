@@ -8,6 +8,7 @@ import { Recipe } from "./recipe.model";
 export class RecipeService{
 isselectiondone =  false;
 selectedRecipe!:Recipe;
+emitRecipes = new Subject<Recipe[]>()
 //emitSelectionDone = new Subject<{isselected:boolean,recipefocus: Recipe}>();
 
 
@@ -62,6 +63,22 @@ isInRange(id:number){
   if(id<this.recipes.length && id >= 0)
   return true;
   else return false;
+}
+
+addRecipe(recipe: Recipe){
+this.recipes.push(recipe);
+this.emitRecipes.next(this.recipes);
+}
+
+updateRecipe(index:number, newRecipe:Recipe){
+
+  this.recipes[index]=newRecipe;
+  this.emitRecipes.next(this.recipes.slice());
+}
+
+deleteRecipe(index:number){
+  this.recipes.splice(index,1);
+  this.emitRecipes.next(this.recipes.slice())
 }
 
 }

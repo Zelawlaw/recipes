@@ -22,7 +22,9 @@
         <a 
           [routerLink]="['edit']" routerLinkActive="active"                  
         >Edit Recipe</a></li>
-      <li class="dropdown-item"><a >Delete</a></li>
+      <li class="dropdown-item"
+      (click)="onDelete()"
+      ><a >Delete</a></li>
     </ul>
   </li>
     </div>
