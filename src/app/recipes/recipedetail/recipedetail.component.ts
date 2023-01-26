@@ -10,13 +10,13 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipedetailComponent implements OnInit {
   recipes!: Recipe[];
-  selectedRecipe !:Recipe ;
-  id !:number
+  selectedRecipe!: Recipe;
+  id!: number;
 
   constructor(
     private recipeService: RecipeService,
     private route: ActivatedRoute,
-    private router:Router
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,32 +27,25 @@ export class RecipedetailComponent implements OnInit {
     //       this.selectedRecipe = clickedrecipe.recipefocus;}
     //   );
 
-   
- 
-   this.route.params.subscribe(
-    (data : Params)=>{
+    this.route.params.subscribe((data: Params) => {
       this.id = +data['id'];
-      console.log('param id :'+this.id);
-      if(this.recipes.length !==0)
-      this.selectedRecipe= this.recipes[this.id];
-    }
-   ); 
 
-   this.route.data.subscribe((data: Data) => {
-    console.log('what about here ?'+data['recipes'][this.id]);
-    this.recipes = data['recipes'];
-    this.selectedRecipe= this.recipes[this.id];
-  });
+      if (this.recipes.length !== 0)
+        this.selectedRecipe = this.recipes[this.id];
+    });
 
-
+    this.route.data.subscribe((data: Data) => {
+      this.recipes = data['recipes'];
+      this.selectedRecipe = this.recipes[this.id];
+    });
   }
 
   addToShoppingList() {
     this.recipeService.addToShoppingList(this.selectedRecipe.ingredients);
   }
   onDelete() {
-   this.recipeService.deleteRecipe(this.id);
-   //navigate away
-  // this.router.navigate(['../'],{relativeTo:this.route});
+    this.recipeService.deleteRecipe(this.id);
+    //navigate away
+    // this.router.navigate(['../'],{relativeTo:this.route});
   }
 }
