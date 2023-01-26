@@ -14,7 +14,7 @@ const appRoutes :Routes = [
   {path:'new', component: RecipeEditComponent},
   {path :'', component:PleaseSelectRecipeComponent , pathMatch:'full',resolve:[RecipesResolverService]},
   {path:':id/edit',component:RecipeEditComponent,resolve: {recipe:RecipeResolver}},
-  {path:':id', component: RecipedetailComponent , resolve: {recipe:RecipeResolver}}
+  {path:':id', component: RecipedetailComponent , resolve: {recipes:RecipesResolverService}}
 ]},
 {path:'shopping-list', component:ShoppinglistComponent},
 {path:'', pathMatch:'full', redirectTo:'/recipes'},

@@ -26,15 +26,19 @@ export class RecipedetailComponent implements OnInit {
     //       this.selectedRecipe = clickedrecipe.recipefocus;}
     //   );
 
-    this.route.data.subscribe((data: Data) => {
-      this.selectedRecipe = data['recipe'];
-    });
+   
 
    this.route.params.subscribe(
     (data : Params)=>{
       this.id = +data['id'];
     }
    ); 
+
+   this.route.data.subscribe((data: Data) => {
+    this.selectedRecipe = data['recipes'][this.id];
+  });
+
+
   }
 
   addToShoppingList() {
@@ -43,6 +47,6 @@ export class RecipedetailComponent implements OnInit {
   onDelete() {
    this.recipeService.deleteRecipe(this.id);
    //navigate away
-   this.router.navigate(['../'],{relativeTo:this.route});
+  // this.router.navigate(['../'],{relativeTo:this.route});
   }
 }
