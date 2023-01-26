@@ -18,6 +18,7 @@ import { RecipeResolver } from './recipes/recipe-resolver.service';
 import { RecipeService } from './recipes/recipe.service';
 import { PleaseSelectRecipeComponent } from './recipes/please-select-recipe/please-select-recipe.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     ShopingEditComponent,
     DropdownDirective,
     PleaseSelectRecipeComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

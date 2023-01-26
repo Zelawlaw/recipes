@@ -26,7 +26,7 @@ export class RecipedetailComponent implements OnInit {
     //       console.log('subscribed?');
     //       this.selectedRecipe = clickedrecipe.recipefocus;}
     //   );
-
+    this.recipes= [];
     this.route.params.subscribe((data: Params) => {
       this.id = +data['id'];
 
