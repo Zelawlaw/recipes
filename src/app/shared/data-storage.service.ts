@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
+import { map ,tap } from "rxjs/operators";
+import { Recipe } from "../recipes/recipe.model";
 import { RecipeService } from "../recipes/recipe.service";
 import { RecipesComponent } from "../recipes/recipes.component";
 
@@ -23,4 +25,22 @@ storeRecipes(){
  )
 }
 
+
+ fetchRecipes() {
+  
+ return this.http.get<Recipe[]>('https://ng-course-repice-book-2849b-default-rtdb.firebaseio.com/recipes.json')
+          .pipe(map( recipes =>{ 
+           return recipes.map(arecipe =>{
+
+             return {...arecipe,ingredients: arecipe.ingredients ? arecipe.ingredients: []}
+           })
+           }
+           ),
+           tap(recipes =>{
+            this.recipeService.setRecipes(recipes);
+           })
+           )
+         
+
+ }
 }

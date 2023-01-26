@@ -4,6 +4,7 @@ import { PleaseSelectRecipeComponent } from "./recipes/please-select-recipe/plea
 import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 import { RecipeResolver } from "./recipes/recipe-resolver.service";
 import { RecipedetailComponent } from "./recipes/recipedetail/recipedetail.component";
+import { RecipesResolverService } from "./recipes/recipes-resolver.service";
 import { RecipesComponent } from "./recipes/recipes.component";
 import { ShoppinglistComponent } from "./shoppinglist/shoppinglist.component";
 
@@ -11,7 +12,7 @@ import { ShoppinglistComponent } from "./shoppinglist/shoppinglist.component";
 const appRoutes :Routes = [
 {path:'recipes',component:RecipesComponent , children:[
   {path:'new', component: RecipeEditComponent},
-  {path :'', component:PleaseSelectRecipeComponent , pathMatch:'full'},
+  {path :'', component:PleaseSelectRecipeComponent , pathMatch:'full',resolve:[RecipesResolverService]},
   {path:':id/edit',component:RecipeEditComponent,resolve: {recipe:RecipeResolver}},
   {path:':id', component: RecipedetailComponent , resolve: {recipe:RecipeResolver}}
 ]},

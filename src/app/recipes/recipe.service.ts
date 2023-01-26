@@ -14,22 +14,24 @@ emitRecipes = new Subject<Recipe[]>()
 
 constructor(private slService:ShoppingListService){}
 
-private recipes:Recipe[] =[
-  new Recipe('Loaded Chips',
-  'Recipe for loaded Chips',
-  'https://iambaker.net/wp-content/uploads/2018/04/cheese-fries.jpg',
-  [
-    new Ingredient('potatoes',5),
-    new Ingredient('cheese',7)
-  ]),
-  new Recipe('Pork Chops',
-  'Recipe for Pork Chops',
-  'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FSeries%2F2022-03_HT_Pan-fried-pork-chops%2F2022-02-22_ATK-4852',
-  [
-    new Ingredient('Pork',5),
-    new Ingredient('carrots',10)
-  ])
-];
+// private recipes:Recipe[] =[
+//   new Recipe('Loaded Chips',
+//   'Recipe for loaded Chips',
+//   'https://iambaker.net/wp-content/uploads/2018/04/cheese-fries.jpg',
+//   [
+//     new Ingredient('potatoes',5),
+//     new Ingredient('cheese',7)
+//   ]),
+//   new Recipe('Pork Chops',
+//   'Recipe for Pork Chops',
+//   'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FSeries%2F2022-03_HT_Pan-fried-pork-chops%2F2022-02-22_ATK-4852',
+//   [
+//     new Ingredient('Pork',5),
+//     new Ingredient('carrots',10)
+//   ])
+// ];
+
+private recipes:Recipe[] =[];
 
 
 //  clickedRecipe(selectedRecipe:Recipe){
@@ -79,6 +81,13 @@ updateRecipe(index:number, newRecipe:Recipe){
 deleteRecipe(index:number){
   this.recipes.splice(index,1);
   this.emitRecipes.next(this.recipes.slice())
+}
+
+setRecipes(dbrecipes : Recipe[]){
+  //console.log(dbrecipes);
+  this.recipes = dbrecipes;
+  console.log(this.recipes);
+  this.emitRecipes.next(this.recipes.slice());
 }
 
 }
