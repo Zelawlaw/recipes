@@ -26,18 +26,19 @@ export class RecipeEditComponent implements OnInit , OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      if (params['id'] != null) {
-        this.id = +params['id'];
-        this.editMode = params['id'] != null;
-        //  this.initForm();
+
+    this.route.params.subscribe(
+      (data : Params)=>{
+        this.id = +data['id'];
+        this.editMode = data['id'] != null;
       }
-    });
+     ); 
+  
 
     this.route.data.subscribe((data: Data) => {
       console.log('resolved??' + JSON.stringify(data));
-      this.recipe = data['recipe'];
-      this.editMode = data['recipe'] != null;
+      this.recipe = data['recipes'][this.id];
+      this.editMode = data['recipes'][this.id] != null;
       console.log('editmode :' + this.editMode);
       this.initForm();
     });
@@ -127,7 +128,7 @@ onAddIngredient(){
     //can use this instead of newRecipe coz structure is the same including name
     // this.recipeService.updateRecipe(this.id,newRecipe);
     this.recipeService.updateRecipe(this.id,this.recipeForm.value);
-    this.router.navigate(['../'],{relativeTo:this.route});
+  //  this.router.navigate(['../'],{relativeTo:this.route});
   }
   else
   {

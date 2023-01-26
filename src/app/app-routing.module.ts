@@ -13,7 +13,7 @@ const appRoutes :Routes = [
 {path:'recipes',component:RecipesComponent , children:[
   {path:'new', component: RecipeEditComponent},
   {path :'', component:PleaseSelectRecipeComponent , pathMatch:'full',resolve:[RecipesResolverService]},
-  {path:':id/edit',component:RecipeEditComponent,resolve: {recipe:RecipeResolver}},
+  {path:':id/edit',component:RecipeEditComponent,resolve: {recipes:RecipesResolverService}},
   {path:':id', component: RecipedetailComponent , resolve: {recipes:RecipesResolverService}}
 ]},
 {path:'shopping-list', component:ShoppinglistComponent},

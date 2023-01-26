@@ -9,7 +9,8 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipedetail.component.css'],
 })
 export class RecipedetailComponent implements OnInit {
-  selectedRecipe!: Recipe;
+  recipes!: Recipe[];
+  selectedRecipe !:Recipe ;
   id !:number
 
   constructor(
@@ -27,15 +28,20 @@ export class RecipedetailComponent implements OnInit {
     //   );
 
    
-
+ 
    this.route.params.subscribe(
     (data : Params)=>{
       this.id = +data['id'];
+      console.log('param id :'+this.id);
+      if(this.recipes.length !==0)
+      this.selectedRecipe= this.recipes[this.id];
     }
    ); 
 
    this.route.data.subscribe((data: Data) => {
-    this.selectedRecipe = data['recipes'][this.id];
+    console.log('what about here ?'+data['recipes'][this.id]);
+    this.recipes = data['recipes'];
+    this.selectedRecipe= this.recipes[this.id];
   });
 
 
