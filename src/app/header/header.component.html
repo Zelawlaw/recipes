@@ -19,10 +19,12 @@
     </ul>
     <ul appDropDown class="navbar-nav d-flex">
       <li  class="dropstart ">
-        <a  href="#" class="dropdown-toggle " role="button">Manage</a>
+        <a   class="dropdown-toggle " role="button">Manage</a>
         <ul  class="dropdown-menu">
-          <li class="dropdown-item"><a href="#">Save Data</a></li>
-          <li class="dropdown-item"><a href="#">Fetch Data</a></li>
+          <li class="dropdown-item"><a style="cursor:pointer;" 
+            (click)="onSaveData()"
+            >Save Data</a></li>
+          <li class="dropdown-item"><a style="cursor:pointer;">Fetch Data</a></li>
         </ul>
       </li>
     </ul>

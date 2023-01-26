@@ -1,4 +1,5 @@
 import { Component, Output ,EventEmitter,OnInit} from '@angular/core';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -9,24 +10,19 @@ export class HeaderComponent implements OnInit {
   activeTab: String = 'recipes'
 @Output('actTab') emitActiveTab  = new EventEmitter<String>();
 
+constructor(private dsService: DataStorageService){}
+
+
 ngOnInit(){
 
-  console.log('header Init emit activeTab');
-  this.emitActiveTab.emit(this.activeTab);
 
 }
 
-onSelect(feature:string){
- console.log('clicked recipes');
-  if(feature=='recipes'){
-    this.activeTab = 'recipes';
-   }
 
-   else{
-    this.activeTab='shoppinglist';}
-  this.emitActiveTab.emit(this.activeTab);
+
+onSaveData(){
+this.dsService.storeRecipes();
+
 }
-
-
 
 }
